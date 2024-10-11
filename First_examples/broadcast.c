@@ -47,7 +47,8 @@ int main(int argc, char** argv){
     }else{
         //i am the sender
         printf("Sender started (Rank: %d)\n", my_rank);
-        for(int q=0; q<comm_sz; q++){
+	int q=0;
+        for(q=0; q<comm_sz; q++){
             if(q != p){
                 //do not send to myself
                 sprintf(greeting, "Sending from sender %d to everyone!", p);
