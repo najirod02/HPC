@@ -30,7 +30,8 @@ int main(int argc, char** argv){
     }else{
         //'main' process
         printf("Greetings from process %d of %d!\n", my_rank, comm_sz);
-        for(int q=1; q<comm_sz; q++){
+        int q=1;
+        for(q=1; q<comm_sz; q++){
             MPI_Recv(greeting, MAX_STRING, MPI_CHAR, q, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
             //MPI_Recv(greeting, MAX_STRING, MPI_CHAR, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
             printf("%s\n", greeting);

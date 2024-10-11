@@ -14,8 +14,8 @@ mpiexec -n <number_of_processes> <executable>
 
 After compiling the source code, you need to create a shell file
 using PBS directives in order to import modules, select the number
-of chunck, cpus and rum to submit your job.<br/>
-Here an example of structure:
+of chunck, cpus and ram to submit your job.<br/>
+Here an example of the structure:
 
 ```shell
 #!bin/bash
@@ -32,7 +32,8 @@ module load mpich-3.2
 mpirun.actual -n <number_of_processes> <executable>
 ```
 
-Then, on the login node of the cluster, simply type:
+Then, on the login node of the cluster, simply type to submit your job
+and execute it:
 
 ```bash
 qsub <shell_file>

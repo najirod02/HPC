@@ -7,7 +7,9 @@ const int MAX_STRING = 100;
 
 /**
  a process 'p' wants to share the content of a variable 'a'
- with all the other processes
+ with all the other processes.
+
+ Note that a broadcast comunication already exists: MPI_Bcast
  */
 
 int main(int argc, char** argv){
@@ -39,8 +41,9 @@ int main(int argc, char** argv){
 
     if(my_rank != p){
         //i am the receiver of the broadcast message
-        MPI_Recv(greeting, MAX_STRING, MPI_CHAR, p, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-        printf("Process %d received: %s\n", my_rank, greeting);
+        MPI_Status status;
+        MPI_Recv(greeting, MAX_STRING, MPI_CHAR, p, 0, MPI_COMM_WORLD, &status);
+        printf("Process %d received: %s (error code: %d)\n", my_rank, greeting, status.MPI_ERROR);
     }else{
         //i am the sender
         printf("Sender started (Rank: %d)\n", my_rank);
