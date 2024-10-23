@@ -26,7 +26,7 @@ int main(int argc, char** argv){
         MPI_Recv(greeting, MAX_STRING, MPI_CHAR, my_rank-1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
         printf("Process %d received: %s\n", my_rank, greeting);
 
-        if(my_rank < (comm_sz - 1)){
+        if(my_rank <= (comm_sz - 1)){
             sprintf(greeting, "Sending from process %d to %d!", my_rank, my_rank+1);
             MPI_Send(greeting, strlen(greeting)+1, MPI_CHAR, my_rank+1, 0, MPI_COMM_WORLD);
         }

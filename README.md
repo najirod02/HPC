@@ -20,7 +20,7 @@ Here an example of the structure:
 ```shell
 #!bin/bash
 #set number of chunks, cpus and memory
-#PBS -l select=1:ncpus=4;mem=2gb
+#PBS -l select=1:ncpus=4:mem=2gb
 
 #set max execution time
 #PBS -l walltime=0:05:00
@@ -40,3 +40,6 @@ qsub <shell_file>
 ```
 
 Remember to always compile the source code if any modifications are applied (using the mpicc command on the login node).
+
+## Notes
+When creating the shell file in order to submit your code, you need to specify the entire path of the file, from the home directory.
