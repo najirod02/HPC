@@ -1,6 +1,11 @@
 # Created by https://www.toptal.com/developers/gitignore/api/c,c++
 # Edit at https://www.toptal.com/developers/gitignore?templates=c,c++
 
+#Custom
+#ignore output traces of execution on cluster
+*.e*
+*.o*
+
 ### C ###
 # Prerequisites
 *.d
