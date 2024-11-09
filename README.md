@@ -53,6 +53,7 @@ using PBS directives in order to import modules, select the number
 of chunck, cpus and ram to submit your job.<br/>
 Here an example of the structure:
 
+Using MPI
 ```shell
 #!bin/bash
 #set number of chunks, cpus and memory
@@ -69,7 +70,32 @@ Here an example of the structure:
 #PBS -q short_cpuQ
 
 module load mpich-3.2
+
 mpirun.actual -n <number_of_processes> <executable>
+```
+
+Using OpenMPI
+```shell
+#!bin/bash
+#set number of chunks, cpus and memory
+#PBS -l select=1:ncpus=4:mem=2gb
+
+#set placing strategies (optional)
+#[pack, scatter, pack:excl, scatter:excl]
+#PBS -l place=pack
+
+#set max execution time
+#PBS -l walltime=0:05:00
+
+#set the queue
+#PBS -q short_cpuQ
+
+module load openmpi-4.0.4
+
+#if you want to set the environmental variable
+#export OMP_NUM_THREADS=<# of threads>
+
+./<executable>
 ```
 
 Then, on the login node of the cluster, simply type to submit your job
@@ -79,10 +105,11 @@ and execute it:
 qsub <shell_file>
 ```
 
+
 If you want to redirect the output and/or error file simply do as follows:
 
 ```bash
-qsub -o /path/to/output/file.txt -e /path/to/error/file.txt
+qsub <executable> -o /path/to/output/file.txt -e /path/to/error/file.txt
 ```
 And with __${JOB_ID}__ you can get the job id and use it as the file name.
 
