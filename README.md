@@ -8,6 +8,10 @@ A list of the most used commands:
 - qstat (-u $USER)
 
 # How to run on local
+Here a brief description on how to both compile and run programs
+that uses MPI and/or OpenMPI.
+
+# MPI
 
 ## Compilation
 ```bash
@@ -21,6 +25,20 @@ mpiexec -n <number_of_processes> <executable>
 
 Note that some of the commands above are also used on the cluster,
 for more details keep reading.
+
+# OpenMPI
+With OpenMPI it is much more simple to both compile and run the code
+
+## Compilation
+```bash
+gcc −fopenmp -o <output_file> <source_file>
+```
+Really important to specify the library to use while compiling.
+
+## Execution
+```bash
+./<exe_file> <optional arguments>
+```
 
 # How to run on cluster
 
